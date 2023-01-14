@@ -1,0 +1,1028 @@
+  [1m[35m (8.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTweets (20211223032306)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "tweets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211223032306"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20211223052933)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211223052933"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserIdToTweets (20211223054433)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "tweets" ADD "user_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211223054433"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddImageToTweets (20220112204308)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "tweets" ADD "image" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220112204308"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDetailsToUsers (20220112211243)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "name" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "profile" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220112211243"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-01-13 06:42:44.733897"], ["updated_at", "2023-01-13 06:42:44.733897"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-01-13 15:43:03 +0900
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 27ms (ActiveRecord: 0.0ms | Allocations: 3171)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:43:03 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 2.1ms | Allocations: 699)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 21.8ms | Allocations: 3248)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 1291.3ms | Allocations: 27766)
+Completed 500 Internal Server Error in 1331ms (ActiveRecord: 0.9ms | Allocations: 37216)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-01-13 15:48:47 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 16ms (ActiveRecord: 0.0ms | Allocations: 2712)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:48:47 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.3ms | Allocations: 699)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2768)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 775.7ms | Allocations: 12388)
+Completed 500 Internal Server Error in 793ms (ActiveRecord: 0.7ms | Allocations: 20936)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:49:38 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.3ms | Allocations: 916)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 9.6ms | Allocations: 3706)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 719.3ms | Allocations: 13620)
+Completed 500 Internal Server Error in 748ms (ActiveRecord: 0.5ms | Allocations: 24420)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 127.0.0.1 at 2023-01-13 15:49:42 +0900
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 468)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:49:42 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 158)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 662)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 707.3ms | Allocations: 5880)
+Completed 500 Internal Server Error in 709ms (ActiveRecord: 0.0ms | Allocations: 6604)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 127.0.0.1 at 2023-01-13 15:51:19 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.0ms | Allocations: 2666)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:51:20 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.2ms | Allocations: 699)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 10.6ms | Allocations: 2768)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 827.7ms | Allocations: 12384)
+Completed 500 Internal Server Error in 845ms (ActiveRecord: 0.5ms | Allocations: 20929)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:52:04 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 7.9ms | Allocations: 743)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 14.7ms | Allocations: 3482)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 773.7ms | Allocations: 13114)
+Completed 500 Internal Server Error in 803ms (ActiveRecord: 0.6ms | Allocations: 23855)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:53:10 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 6.5ms | Allocations: 843)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 15.4ms | Allocations: 3930)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 757.5ms | Allocations: 13644)
+Completed 500 Internal Server Error in 812ms (ActiveRecord: 0.7ms | Allocations: 24306)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 127.0.0.1 at 2023-01-13 15:53:15 +0900
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 468)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:53:15 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 158)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 662)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 837.2ms | Allocations: 5881)
+Completed 500 Internal Server Error in 842ms (ActiveRecord: 0.0ms | Allocations: 6605)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/users/" for 127.0.0.1 at 2023-01-13 15:54:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/" for 127.0.0.1 at 2023-01-13 15:54:14 +0900
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 290)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:54:14 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 156)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 644)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 706.5ms | Allocations: 5861)
+Completed 500 Internal Server Error in 710ms (ActiveRecord: 0.0ms | Allocations: 6569)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 15:56:23 +0900
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.9ms | Allocations: 713)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 20.9ms | Allocations: 3369)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+env: node: No such file or directory
+env: node: No such file or directory
+
+  Rendered layout layouts/application.html.erb (Duration: 732.9ms | Allocations: 13085)
+Completed 500 Internal Server Error in 768ms (ActiveRecord: 0.6ms | Allocations: 23940)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:06:13 +0900
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as HTML
+Completed 401 Unauthorized in 27ms (ActiveRecord: 0.0ms | Allocations: 2791)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-13 16:06:13 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.9ms | Allocations: 699)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 62.4ms | Allocations: 2768)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/kuwatashouhei/Desktop/gohantabetai/public/packs
+[Webpacker] Calling `DidYouMean::SPELL_CHECKERS.merge!(error_name => spell_checker)' has been deprecated. Please call `DidYouMean.correct_error(error_name, spell_checker)' instead.
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:20: warning: already initialized constant Pathname::TO_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:20: warning: previous definition of TO_PATH was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:22: warning: already initialized constant Pathname::SAME_PATHS
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:22: warning: previous definition of SAME_PATHS was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:34: warning: already initialized constant Pathname::SEPARATOR_LIST
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:34: warning: previous definition of SEPARATOR_LIST was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:35: warning: already initialized constant Pathname::SEPARATOR_PAT
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:35: warning: previous definition of SEPARATOR_PAT was here
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/3.0.0/pathname.rb:41: warning: already initialized constant Pathname::ABSOLUTE_PATH
+/Users/kuwatashouhei/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pathname-0.2.0/lib/pathname.rb:41: warning: previous definition of ABSOLUTE_PATH was here
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+
+[Webpacker] Hash: 2034dd941d5476d8645c
+Version: webpack 4.46.0
+Time: 1352ms
+Built at: 2023/01/13 16:06:17
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-3dd0dc24d9c39bc09227.js    125 KiB  application  [emitted] [immutable]  application
+js/application-3dd0dc24d9c39bc09227.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-3dd0dc24d9c39bc09227.js js/application-3dd0dc24d9c39bc09227.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 3706.7ms | Allocations: 11506)
+Completed 200 OK in 3743ms (Views: 3726.3ms | ActiveRecord: 1.0ms | Allocations: 20088)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-01-13 16:06:21 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "shouhei.k224k@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 19ms (ActiveRecord: 1.3ms | Allocations: 2849)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.5ms | Allocations: 171)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 688)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 4275)
+Completed 200 OK in 402ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 6221)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2023-01-13 16:06:24 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 2.0ms | Allocations: 228)
+  Rendered users/shared/_links.html.erb (Duration: 0.9ms | Allocations: 178)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 99.6ms | Allocations: 3747)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 107.5ms | Allocations: 7409)
+Completed 200 OK in 124ms (Views: 122.7ms | ActiveRecord: 0.0ms | Allocations: 9052)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-01-13 16:06:37 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"桑田翔平", "email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "shouhei.k224k@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name") VALUES (?, ?, ?, ?, ?)[0m  [["email", "shouhei.k224k@gmail.com"], ["encrypted_password", "$2a$12$3zWdhzVLzx/6sT0FHP6m9.wmgkF/6ciPNweUAH7GUt6OXi.JumOxe"], ["created_at", "2023-01-13 07:06:38.192697"], ["updated_at", "2023-01-13 07:06:38.192697"], ["name", "桑田翔平"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 262ms (ActiveRecord: 3.1ms | Allocations: 11205)
+
+
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:06:38 +0900
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.5ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  Rendered tweets/index.html.erb within layouts/application (Duration: 19.4ms | Allocations: 5068)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.2ms | Allocations: 8393)
+Completed 200 OK in 43ms (Views: 27.6ms | ActiveRecord: 0.7ms | Allocations: 13177)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2023-01-13 16:06:42 +0900
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/new.html.erb within layouts/application (Duration: 18.8ms | Allocations: 4931)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.2ms | Allocations: 8331)
+Completed 200 OK in 38ms (Views: 27.1ms | ActiveRecord: 0.7ms | Allocations: 13478)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2023-01-13 16:06:50 +0900
+Processing by TweetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "tweet"=>{"body"=>"今日はこんなご飯を食べたよ"}, "commit"=>"送信"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTweet Create (0.4ms)[0m  [1m[32mINSERT INTO "tweets" ("body", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["body", "今日はこんなご飯を食べたよ"], ["created_at", "2023-01-13 07:06:50.666017"], ["updated_at", "2023-01-13 07:06:50.666017"], ["user_id", 1]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 34ms (ActiveRecord: 2.1ms | Allocations: 9279)
+
+
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:06:50 +0900
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  Rendered tweets/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 4079)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 9474)
+Completed 200 OK in 25ms (Views: 20.4ms | ActiveRecord: 0.6ms | Allocations: 11142)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2023-01-13 16:06:53 +0900
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1826)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 5665)
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 0.1ms | Allocations: 7262)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2023-01-13 16:07:42 +0900
+Processing by TweetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "tweet"=>{"body"=>"今日もこんなご飯を食べたよ", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fd674fa2bc8 @tempfile=#<Tempfile:/var/folders/12/p_ld60x96l1cfksw5nwlyrp00000gn/T/RackMultipart20230113-95848-q2tp1i.jpg>, @original_filename="線香花火.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"tweet[image]\"; filename=\"\xE7\xB7\x9A\xE9\xA6\x99\xE8\x8A\xB1\xE7\x81\xAB.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"送信"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTweet Create (0.6ms)[0m  [1m[32mINSERT INTO "tweets" ("body", "created_at", "updated_at", "user_id", "image") VALUES (?, ?, ?, ?, ?)[0m  [["body", "今日もこんなご飯を食べたよ"], ["created_at", "2023-01-13 07:07:42.082910"], ["updated_at", "2023-01-13 07:07:42.082910"], ["user_id", 1], ["image", "線香花火.jpg"]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 36ms (ActiveRecord: 2.2ms | Allocations: 6185)
+
+
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:07:42 +0900
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  Rendered tweets/index.html.erb within layouts/application (Duration: 33.2ms | Allocations: 12539)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 12617)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.3ms | Allocations: 14180)
+
+
+  
+ActionView::Template::Error (Must supply cloud_name in tag or in configuration):
+    11:     <%= t.user.email %>
+    12:     <br>
+    13:     <div class="image">
+    14:     <%= image_tag t.image_url, size: "250x200" if t.image? %>
+    15:     </div>
+    16:       <div class="main-box">
+    17:         <div class="left-container"><%= t.body %></div>
+  
+app/views/tweets/index.html.erb:14
+app/views/tweets/index.html.erb:8
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:13:14 +0900
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.6ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  Rendered tweets/index.html.erb within layouts/application (Duration: 110.0ms | Allocations: 17089)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 127.0ms | Allocations: 21044)
+Completed 200 OK in 164ms (Views: 130.4ms | ActiveRecord: 2.5ms | Allocations: 35242)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2023-01-13 16:13:18 +0900
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/new.html.erb within layouts/application (Duration: 18.2ms | Allocations: 6058)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.4ms | Allocations: 9671)
+Completed 200 OK in 33ms (Views: 27.4ms | ActiveRecord: 0.2ms | Allocations: 11734)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2023-01-13 16:13:25 +0900
+Processing by TweetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "tweet"=>{"body"=>"mnbhjmn", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fd7f65d9ca8 @tempfile=#<Tempfile:/var/folders/12/p_ld60x96l1cfksw5nwlyrp00000gn/T/RackMultipart20230113-96413-88bdn6.jpg>, @original_filename="c90d0ac1d189822d6286d7025c10caba7_4620693218545065101_210522_0001.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"tweet[image]\"; filename=\"c90d0ac1d189822d6286d7025c10caba7_4620693218545065101_210522_0001.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"送信"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTweet Create (1.5ms)[0m  [1m[32mINSERT INTO "tweets" ("body", "created_at", "updated_at", "user_id", "image") VALUES (?, ?, ?, ?, ?)[0m  [["body", "mnbhjmn"], ["created_at", "2023-01-13 07:13:25.124319"], ["updated_at", "2023-01-13 07:13:25.124319"], ["user_id", 1], ["image", "c90d0ac1d189822d6286d7025c10caba7_4620693218545065101_210522_0001.jpg"]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 21ms (ActiveRecord: 2.9ms | Allocations: 7059)
+
+
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:13:25 +0900
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  Rendered tweets/index.html.erb within layouts/application (Duration: 22.5ms | Allocations: 5260)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 8519)
+Completed 200 OK in 70ms (Views: 42.1ms | ActiveRecord: 0.5ms | Allocations: 10127)
+
+
+Started DELETE "/tweets/3" for 127.0.0.1 at 2023-01-13 16:13:28 +0900
+Processing by TweetsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTweet Load (0.3ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:40:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tweets_controller.rb:41:in `destroy'
+  [1m[36mTweet Destroy (0.7ms)[0m  [1m[31mDELETE FROM "tweets" WHERE "tweets"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/tweets_controller.rb:41:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tweets_controller.rb:41:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 15ms (ActiveRecord: 2.3ms | Allocations: 4130)
+
+
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:13:28 +0900
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  Rendered tweets/index.html.erb within layouts/application (Duration: 12.1ms | Allocations: 3994)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | Allocations: 8026)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 0.5ms | Allocations: 9819)
+
+
+Started GET "/" for 127.0.0.1 at 2023-01-13 16:13:31 +0900
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:10
+  Rendered tweets/index.html.erb within layouts/application (Duration: 14.8ms | Allocations: 3991)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 7222)
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 0.6ms | Allocations: 8789)
+
+
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTweets (20211223032306)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "tweets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211223032306"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20211223052933)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211223052933"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserIdToTweets (20211223054433)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "tweets" ADD "user_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211223054433"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddImageToTweets (20220112204308)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tweets" ADD "image" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220112204308"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDetailsToUsers (20220112211243)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "name" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "profile" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220112211243"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-01-13 07:16:28.542834"], ["updated_at", "2023-01-13 07:16:28.542834"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-01-14 15:30:24 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 28ms (ActiveRecord: 1.1ms | Allocations: 5796)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-01-14 15:30:24 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 2.2ms | Allocations: 699)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 60.2ms | Allocations: 2756)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 109.8ms | Allocations: 10313)
+Completed 200 OK in 129ms (Views: 117.4ms | ActiveRecord: 0.0ms | Allocations: 17933)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-01-14 15:30:27 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "shouhei.k224k@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.7ms | Allocations: 2009)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 171)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 688)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 4278)
+Completed 200 OK in 293ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 5753)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-01-14 15:30:32 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "shouhei.k224k@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.2ms | Allocations: 1685)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 153)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 591)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 4027)
+Completed 200 OK in 222ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 4665)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-01-14 15:30:37 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "shouhei.k224k@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.1ms | Allocations: 1461)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 153)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 591)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4025)
+Completed 200 OK in 212ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 4648)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2023-01-14 15:30:40 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.8ms | Allocations: 235)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 178)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 2872)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 6515)
+Completed 200 OK in 15ms (Views: 14.5ms | ActiveRecord: 0.0ms | Allocations: 8185)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-01-14 15:30:59 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"桑田翔平", "email"=>"shouhei.k224k@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "shouhei.k224k@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name") VALUES (?, ?, ?, ?, ?)[0m  [["email", "shouhei.k224k@gmail.com"], ["encrypted_password", "$2a$12$Q4qwo79J3iN/tScmu7YRUu783F7faapPvtFY8hqjsjggcrAvLRzF6"], ["created_at", "2023-01-14 06:31:00.145065"], ["updated_at", "2023-01-14 06:31:00.145065"], ["name", "桑田翔平"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 232ms (ActiveRecord: 3.5ms | Allocations: 11185)
+
+
+Started GET "/" for 127.0.0.1 at 2023-01-14 15:31:00 +0900
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTweet Load (0.5ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/views/tweets/index.html.erb:8
+  Rendered tweets/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 6160)
+Completed 200 OK in 21ms (Views: 11.9ms | ActiveRecord: 0.6ms | Allocations: 10484)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2023-01-14 15:31:02 +0900
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/new.html.erb within layouts/application (Duration: 28.7ms | Allocations: 3215)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.5ms | Allocations: 6609)
+Completed 200 OK in 43ms (Views: 34.1ms | ActiveRecord: 0.7ms | Allocations: 11773)
+
+

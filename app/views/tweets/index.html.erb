@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<div class="tweets-container">
+
+  <h3>投稿一覧</h3>
+  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+
+  <% @tweets.each do |t| %>
+  <div class="tweet">
+    <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+    <%= t.user.email %>
+    <br>
+    <div class="image">
+    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+    </div>
+      <div class="main-box">
+        <div class="left-container"><%= t.body %></div>
+        <br>
+        <div class="right-container">
+          <br>
+          <%= link_to "詳細", tweet_path(t.id) %>
+          <%= link_to "編集", edit_tweet_path(t.id) %>
+          <%= link_to "削除", tweet_path(t.id), method: :delete %>
+        </div>
+      </div>
+      <br>
+      <p class="time"><%= t.created_at %></p>
+  </div>
+  <% end %>
+</div>

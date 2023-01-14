@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag 'profiel', :media => "all" %>
+
+<div class="profiel-container">
+    <% if current_user.id == @user.id %>
+        <h1>プロフィール</h1>
+    <% else %>
+        <h1>気になる投稿者</h1>
+    <% end %>
+    
+    <div class="menu">
+        <ul>
+            <li>名前 : <%= @user.name %>
+            <li>メールアドレス : <%= @user.email %>
+            <li>プロフィール : <%= @user.profile %>
+        </ul>
+    </div>
+    <div class="henshu">
+        <% if current_user.id == @user.id %>
+            <%= link_to "編集する", edit_user_registration_path %>
+        <% end %>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2>ユーザーの投稿一覧</h2>
+    <% @user.tweets.each do |t| %>
+        <div class="tweet">
+            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+            <%= t.user.email %>
+            <br>
+            <div class="image">
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+            </div>
+            <div class="main-box">
+            <div class="left-container"><%= t.body %></div>
+            <div class="right-container">
+                <%= link_to "詳細", tweet_path(t.id) %>
+                <%= link_to "編集", edit_tweet_path(t.id) %>
+                <%= link_to "削除", tweet_path(t.id), method: :delete %>
+            </div>
+            </div>
+            <br>
+            <p class="time"><%= t.created_at %></p>
+        </div>
+    <% end %>
+
+
+    
+
+
+
+
+
+    <%= link_to "投稿一覧に戻る", tweets_path %>
+
+</div>

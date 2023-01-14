@@ -1,0 +1,36 @@
+.tweets-container {
+    width: 50%;
+    margin: 10px auto;
+  }
+  h3 {
+    width: 100px;
+    margin: 30px auto;
+    text-align: center;
+  }
+  .tweet {
+    border-top: solid #ecd824;
+    margin-top: 10px;
+    padding-top: 20px;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  .right-container {
+    text-align: right;
+  }
+  .main-box {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .time {
+    display: flex;
+    justify-content: flex-end;
+  }
